@@ -1,22 +1,150 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #f0f8ff;
     margin: 0;
+    cursor: url('hammer.png'), auto;
+    cursor: none;
 }
 
 .game-container {
     text-align: center;
     width: 100%;
-    height: 100%;
-    position: relative;
+    max-width: 1000px;
 }
 
 #gameBoard {
+    background-image: url(background-img.png);
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 800px;
+    height: 500px;
+    margin: 20px auto;
+    background-color: #dcdcdc;
+    border: 2px solid #333;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hole {
+    width: 100px;
+    height: 60px;
+    background-color: #35221e;
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.round1 .hole:nth-child(1) { top: 50%; left: 20%; }
+.round1 .hole:nth-child(2) { top: 30%; left: 35%; }
+.round1 .hole:nth-child(3) { top: 30%; left: 65%; }
+.round1 .hole:nth-child(4) { top: 50%; left: 80%; }
+
+.round2 .hole:nth-child(1) { top: 50%; left: 15%; }
+.round2 .hole:nth-child(2) { top: 30%; left: 30%; }
+.round2 .hole:nth-child(3) { top: 20%; left: 50%; }
+.round2 .hole:nth-child(4) { top: 30%; left: 70%; }
+.round2 .hole:nth-child(5) { top: 50%; left: 85%; }
+.round2 .hole:nth-child(6) { top: 70%; left: 30%; }
+.round2 .hole:nth-child(7) { top: 70%; left: 70%; }
+.round2 .hole:nth-child(8) { top: 80%; left: 50%; }
+
+.round3 .hole:nth-child(1) { top: 50%; left: 10%; }
+.round3 .hole:nth-child(2) { top: 30%; left: 25%; }
+.round3 .hole:nth-child(3) { top: 20%; left: 40%; }
+.round3 .hole:nth-child(4) { top: 20%; left: 60%; }
+.round3 .hole:nth-child(5) { top: 30%; left: 75%; }
+.round3 .hole:nth-child(6) { top: 50%; left: 90%; }
+.round3 .hole:nth-child(7) { top: 70%; left: 75%; }
+.round3 .hole:nth-child(8) { top: 80%; left: 60%; }
+.round3 .hole:nth-child(9) { top: 80%; left: 40%; }
+.round3 .hole:nth-child(10) { top: 70%; left: 25%; }
+.round3 .hole:nth-child(11) { top: 45%; left: 60%; }
+.round3 .hole:nth-child(12) { top: 55%; left: 40%; }
+
+.mole {
+    width: 90px;
+    height: 90px;
+    background-image: url('Mole-Image.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.4s ease-out;
+}
+
+.mole.show {
+    transform: translateX(-50%) scaleY(1.2);
+    transition: transform 0.4s ease-out;
+}
+
+.mole.hide {
+    transform: translateX(-50%) scaleY(0.3);
+    transition: transform 0.3s ease-in;
+}
+
+.hammer {
+    width: 150px;
+    height: 150px;
+    background-image: url('hammer.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    pointer-events: none;
+    transform: rotate(-20deg);
+    transition: transform 0.1s ease-out;
+}
+
+.hammer.hit {
+    transform: rotate(0deg) scale(0.9);
+}
+
+#score, #timer {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#gameOver {
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
+    margin-top: 20px;
+    display: none;
+}
+
+.start-btn, .game-btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #ff7b00, #ffdd00);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 5px #c65a00;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.start-btn:hover, .game-btn:hover {
+    background: linear-gradient(135deg, #ff5e00, #ffcc00);
+}
+
+.start-btn:active, .game-btn:active {
+    box-shadow: 0 3px #c65a00;
+    transform: translate(-50%, -47%);
 }
