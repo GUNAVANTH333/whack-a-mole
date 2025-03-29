@@ -121,7 +121,7 @@ function popMole() {
 }
 
 function checkRoundProgress() {
-    if ((round === 1 && score >= 10) || (round === 2 && score >= 20)) {
+    if ((round === 1 && score >= 5) || (round === 2 && score >= 20)) {
         nextRound();
     }
 }
