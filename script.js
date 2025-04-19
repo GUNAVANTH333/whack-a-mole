@@ -13,6 +13,8 @@ const gameOverDisplay = document.getElementById('gameOver');
 const gameBoard = document.getElementById('gameBoard');
 const holes = document.querySelectorAll('.hole');
 const hammer = document.getElementById('hammer');
+const levels = document.getElementById('levels');
+
 const hitSound = new Audio('hammer-hit.mp3');
 
 document.addEventListener('mousemove', (e) => {
@@ -105,6 +107,12 @@ function popMole() {
 
         mole.classList.add('hit');
         score++;
+        if (score < 5){
+            levels.textContent = `Level${1}`;
+        }
+        else if (score >= 5) {
+            levels.textContent = `Level${2}`;
+        }
         scoreDisplay.textContent = `Score: ${score}`;
 
         setTimeout(() => {
